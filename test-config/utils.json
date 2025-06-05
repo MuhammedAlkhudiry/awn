@@ -1,9 +1,0 @@
-{
-  "$schema": "https://awn.dev/schema.json",
-  "utils": {
-    "path": "./src/utils"
-  },
-  "aliases": {
-    "utils": "~/utils"
-  }
-}
