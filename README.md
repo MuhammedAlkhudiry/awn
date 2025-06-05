@@ -12,13 +12,34 @@ npm install -g awn
 
 ## Usage
 
+### Initialize configuration (recommended):
+
+```bash
+# Create utils.json configuration file
+npx awn init
+```
+
+This creates a `utils.json` file similar to shadcn's `components.json`:
+
+```json
+{
+  "$schema": "https://awn.dev/schema.json",
+  "utils": {
+    "path": "./src/utils"
+  },
+  "aliases": {
+    "utils": "~/utils"
+  }
+}
+```
+
 ### Add utilities to your project:
 
 ```bash
-# Add a utility function to your utils folder
+# Add a utility function (uses config path)
 npx awn add debounce
 
-# Specify a custom path
+# Override with custom path
 npx awn add chunk --path ./src/lib/utils
 ```
 
@@ -152,6 +173,40 @@ import { clamp } from './utils/clamp';
 clamp(5, 1, 10); // 5
 clamp(-5, 1, 10); // 1
 ```
+
+## Configuration
+
+### utils.json
+
+The `utils.json` file allows you to customize how Awn works in your project:
+
+```json
+{
+  "$schema": "https://awn.dev/schema.json",
+  "utils": {
+    "path": "./src/utils"
+  },
+  "aliases": {
+    "utils": "~/utils",
+    "~": "./src",
+    "@": "./src"
+  }
+}
+```
+
+**Configuration Options:**
+
+- `utils.path` - Where utilities will be stored (default: `./src/utils`)
+- `aliases` - Path aliases for import statements
+- `aliases.utils` - Alias shown in import suggestions (default: `~/utils`)
+
+**Creating Configuration:**
+
+```bash
+npx awn init  # Creates utils.json with defaults
+```
+
+The configuration is optional. Without it, Awn will use `./src/utils` as the default path.
 
 ## License
 
