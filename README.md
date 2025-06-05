@@ -1,8 +1,8 @@
-# عون (AWN)
+# عون (Awn)
 
 > A shadcn-style utility library for TypeScript - copy utilities into your project
 
-**عون** (AWN, meaning "help" in Arabic) is a collection of TypeScript utility functions that you can copy directly into your project, inspired by the shadcn/ui approach. Instead of installing a heavy dependency, you get clean, typed utility functions that live in your codebase.
+**عون** (Awn, meaning "help" in Arabic) is a collection of TypeScript utility functions that you can copy directly into your project, inspired by the shadcn/ui approach. Instead of installing a heavy dependency, you get clean, typed utility functions that live in your codebase.
 
 ## Installation
 
@@ -109,7 +109,7 @@ The GitHub Actions workflow will automatically:
 
 ## How it works
 
-AWN maintains a registry of utility functions with embedded manifests. When you run `npx awn add <utility>`, it copies only the function code (without metadata) directly into your project. This means:
+Awn maintains a registry of utility functions with embedded manifests. When you run `npx awn add <utility>`, it copies only the function code (without metadata) directly into your project. This means:
 
 - ✅ No runtime dependencies
 - ✅ Full TypeScript support with strict typing

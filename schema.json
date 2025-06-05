@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Awn Utils Configuration",
+  "description": "Configuration file for Awn utility library",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "utils": {
+      "type": "object",
+      "description": "Utility configuration",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path where utilities will be stored",
+          "default": "./src/utils"
+        },
+        "alias": {
+          "type": "string",
+          "description": "Alias for the utils path in imports",
+          "default": "~/utils"
+        }
+      },
+      "required": ["path"],
+      "additionalProperties": false
+    },
+    "aliases": {
+      "type": "object",
+      "description": "Path aliases for imports",
+      "properties": {
+        "utils": {
+          "type": "string",
+          "description": "Alias for utils imports"
+        }
+      },
+      "patternProperties": {
+        "^[a-zA-Z_@~][a-zA-Z0-9_@~]*$": {
+          "type": "string",
+          "description": "Custom path alias"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["utils"],
+  "additionalProperties": false
+}

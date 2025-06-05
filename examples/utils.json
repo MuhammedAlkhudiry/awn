@@ -1,0 +1,12 @@
+{
+  "$schema": "https://awn.dev/schema.json",
+  "utils": {
+    "path": "./src/utils",
+    "alias": "~/utils"
+  },
+  "aliases": {
+    "utils": "~/utils",
+    "~": "./src",
+    "@": "./src"
+  }
+}

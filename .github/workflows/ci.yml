@@ -46,6 +46,9 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout repository
@@ -53,6 +56,8 @@ jobs:
         with:
           # This makes Actions fetch all Git history so that Changesets can generate proper changelogs
           fetch-depth: 0
+          # Use a token that has write permissions
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

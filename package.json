@@ -1,7 +1,7 @@
 {
   "name": "awn",
   "version": "0.0.1",
-  "description": "A shadcn-style utility library for TypeScript - copy utilities into your project",
+  "description": "عون (Awn) - A shadcn-style utility library for TypeScript. Copy utilities into your project.",
   "type": "module",
   "publishConfig": {
     "access": "public"

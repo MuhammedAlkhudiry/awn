@@ -2,9 +2,10 @@ import fs from 'fs-extra';
 import * as path from 'path';
 import chalk from 'chalk';
 import { getRegistryEntry } from '../registry/index.js';
+import { getConfig, getUtilsPath } from '../utils/config.js';
 
 interface AddOptions {
-  path: string;
+  path?: string;
 }
 
 function extractFunctionContent(content: string): string {
@@ -46,7 +47,9 @@ export async function addUtility(
       process.exit(1);
     }
 
-    const targetDir = options.path;
+    // Use config or command line option
+    const config = await getConfig();
+    const targetDir = options.path || getUtilsPath(config);
     const targetFile = path.join(targetDir, `${utilityName}.ts`);
 
     await fs.ensureDir(targetDir);
@@ -61,8 +64,10 @@ export async function addUtility(
     const cleanContent = extractFunctionContent(registryEntry.content);
     await fs.writeFile(targetFile, cleanContent);
 
+    // Show relative path from current directory
+    const relativePath = path.relative(process.cwd(), targetFile);
     console.log(
-      chalk.green(`✅ Successfully added ${utilityName}.ts to ${targetDir}`)
+      chalk.green(`✅ Successfully added ${utilityName}.ts to ${relativePath}`)
     );
 
     if (registryEntry.dependencies && registryEntry.dependencies.length > 0) {
@@ -70,6 +75,15 @@ export async function addUtility(
         chalk.blue(`📦 Dependencies: ${registryEntry.dependencies.join(', ')}`)
       );
     }
+
+    // Show import suggestion
+    const importPath = config.aliases?.utils
+      ? `${config.aliases.utils}/${utilityName}`
+      : `./${path.relative(path.dirname(targetFile), targetFile).replace('.ts', '')}`;
+    
+    console.log(
+      chalk.gray(`💡 Import: import { ${utilityName} } from '${importPath}';`)
+    );
   } catch (error) {
     console.error(chalk.red(`❌ Error adding utility: ${error}`));
     process.exit(1);
