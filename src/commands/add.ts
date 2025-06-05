@@ -1,8 +1,8 @@
 import fs from 'fs-extra';
 import * as path from 'path';
 import chalk from 'chalk';
-import { getRegistryEntry } from '../registry/index.js';
-import { getConfig, getUtilsPath } from '../utils/config.js';
+import {getRegistryEntry} from '../registry/index.js';
+import {getConfig, getUtilsPath} from '../utils/config.js';
 
 interface AddOptions {
   path?: string;
@@ -80,7 +80,7 @@ export async function addUtility(
     const importPath = config.aliases?.utils
       ? `${config.aliases.utils}/${utilityName}`
       : `./${path.relative(path.dirname(targetFile), targetFile).replace('.ts', '')}`;
-    
+
     console.log(
       chalk.gray(`💡 Import: import { ${utilityName} } from '${importPath}';`)
     );

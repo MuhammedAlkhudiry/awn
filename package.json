@@ -25,7 +25,9 @@
     "typecheck": "tsc --noEmit",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "npm run build && changeset publish"
+    "release": "npm run build && changeset publish",
+    "docs:generate": "cd docs/src && node generate-docs.js",
+    "docs:serve": "cd docs/public && npx serve -p 8000"
   },
   "dependencies": {
     "chalk": "^5.3.0",
