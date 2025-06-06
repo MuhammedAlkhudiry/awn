@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import * as path from 'path';
 import chalk from 'chalk';
-import { defaultConfig, UtilsConfig } from '../types/config.js';
+import { defaultConfig, UtilsConfig } from '../types/config';
 
 export async function initConfig(): Promise<void> {
   try {
