@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import * as path from 'path';
 import chalk from 'chalk';
-import {defaultConfig, UtilsConfig} from '../types/config.js';
+import { defaultConfig, UtilsConfig } from '../types/config.js';
 
 export async function initConfig(): Promise<void> {
   try {
@@ -20,10 +20,10 @@ export async function initConfig(): Promise<void> {
 
     console.log(chalk.green('✅ Created utils.json'));
     console.log(
-        chalk.blue('📝 You can now customize your utility configuration')
+      chalk.blue('📝 You can now customize your utility configuration')
     );
     console.log(
-        chalk.gray('   Edit the path and aliases to match your project structure')
+      chalk.gray('   Edit the path and aliases to match your project structure')
     );
   } catch (error) {
     console.error(chalk.red(`❌ Error creating config: ${error}`));

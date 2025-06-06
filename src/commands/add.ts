@@ -1,8 +1,8 @@
 import fs from 'fs-extra';
 import * as path from 'path';
 import chalk from 'chalk';
-import {getRegistryEntry} from '../registry/index.js';
-import {getConfig, getUtilsPath} from '../utils/config.js';
+import { getRegistryEntry } from '../registry/index.js';
+import { getConfig, getUtilsPath } from '../utils/config.js';
 
 interface AddOptions {
   path?: string;
