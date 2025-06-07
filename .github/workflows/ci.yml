@@ -48,15 +48,14 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     permissions:
       contents: write
+      issues: write
       pull-requests: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # This makes Actions fetch all Git history so that Changesets can generate proper changelogs
           fetch-depth: 0
-          # Use a token that has write permissions
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
@@ -72,12 +71,8 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Create Release Pull Request or Publish to NPM
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          version: npm run version
-          publish: npm run release
+      - name: Release
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
